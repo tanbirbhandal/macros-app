@@ -4,6 +4,10 @@ import Upload from './components/UploadButton';
 import { uploadMenuImage } from './api/upload.js';
 import MacrosCard from './components/MacrosCard';
 import Box from '@mui/material/Box';
+import DailyMacros from './components/DailyMacros';
+import WaterCard from './components/WaterCard';
+import MacrosGoal from './components/MacrosGoal';
+import WaterGoal from './components/WaterGoal';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +35,12 @@ export default function App() {
   return (
     <>
     <Header />
-
+      <Box sx={{ display: 'flex', gap: 2, p: 2 }}>
+        <DailyMacros />
+        <WaterCard />
+        <MacrosGoal />
+        <WaterGoal />
+      </Box>
       {/* Main content area that pushes children toward the bottom */}
       <main>
         <Upload onClick={handleUpload} disabled={isLoading} />

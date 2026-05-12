@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 
 export default function Header() {
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: 'white', boxShadow: 1 }}>
+    <AppBar position="sticky" sx={{ backgroundColor: 'white', boxShadow: 1, borderRadius: 4 }}>
       <Toolbar sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <img src={GymLogo} alt="GYM logo" width={100} height={100} />
