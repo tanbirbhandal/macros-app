@@ -12,6 +12,9 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 */
 export async function uploadMenuImage(file) {
 
+    // Used to log in js functions
+    console.log("RUNNING UPLOAD")
+
     // if nothing provided -- fail early
     if (!file) throw new Error('No file provided');
 
