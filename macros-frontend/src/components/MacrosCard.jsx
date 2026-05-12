@@ -20,7 +20,7 @@ export default function MacrosCard({ data }) {
             <Grid item xs={3} key={macro.label}>
               <Box sx={{
                 bgcolor: macro.color,
-                borderRadius: 2,
+                borderRadius: 4,
                 p: 2,
                 textAlign: 'center'
               }}>
