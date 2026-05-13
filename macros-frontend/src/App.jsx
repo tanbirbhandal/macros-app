@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import Header from './components/Header';
-import Upload from './components/UploadButton';
-import { uploadMenuImage } from './api/upload.js';
-import MacrosCard from './components/MacrosCard';
+import { uploadMenuImage, analyzeText } from './api/upload.js';
 import Box from '@mui/material/Box';
 import DailyMacros from './components/DailyMacros';
 import WaterCard from './components/WaterCard';
@@ -16,6 +14,7 @@ export default function App() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [previewText, setPreviewText] = useState(null);
 
   async function handleUpload(file) {
     if (!file) return;
@@ -36,6 +35,26 @@ export default function App() {
     }
   }
 
+  async function handleTextSubmit(text) {
+    if (!text.trim()) return;
+    setPreviewText(text);
+    setPreviewUrl(null);
+    setIsLoading(true);
+    setError('');
+    setResult(null);
+
+    try {
+      const data = await analyzeText(text);
+      setResult(data);
+    }
+    catch (e) {
+      setError(e.message || 'Text analysis failed');
+    }
+    finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <>
     <Header />
@@ -46,11 +65,10 @@ export default function App() {
         <WaterGoal />
       </Box>
       <main style={{ paddingBottom: '100px' }}>
-        <PreviewArea result={ result } previewUrl={previewUrl} />
-        {isLoading && <p style={{ marginTop: 12 }}>Uploading...</p>}
+        <PreviewArea result={ result } previewUrl={previewUrl} previewText={previewText} />
         {error && <p style={{ marginTop:12, color: 'crimson' }}>Error: {error}</p>}
       </main>
-      <ChatInput onUpload={handleUpload} />
+      <ChatInput onUpload={handleUpload} onTextSubmit={handleTextSubmit} isLoading={isLoading} />
     </>
   );
 }

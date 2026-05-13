@@ -13,7 +13,7 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 export async function uploadMenuImage(file) {
 
     // Used to log in js functions
-    console.log("RUNNING UPLOAD")
+    console.log("RUNNING UPLOAD");
 
     // if nothing provided -- fail early
     if (!file) throw new Error('No file provided');
@@ -36,5 +36,24 @@ export async function uploadMenuImage(file) {
     }
 
     // FastAPI returns JSON --  parse and hand it back to the caller
+    return await res.json();
+}
+
+export async function analyzeText(text) {
+    console.log("RUNNING ANALYZE TEXT");
+
+    if (!text) throw new Error('No text provided');
+
+    const res = await fetch(`${API_URL}/analyze-text`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+    });
+
+    if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`HTTP ${res.status}: ${text}`);
+    }
+
     return await res.json();
 }

@@ -4,8 +4,12 @@ from typing import  Dict, Any
 from typing_extensions import TypedDict
 import json
 from fastapi.middleware.cors import CORSMiddleware
+from  pydantic import BaseModel
 
 import llm, ocr
+
+class TextRequest(BaseModel):
+    text: str
 
 class MacrosResponse(TypedDict):
     calories: int
@@ -62,6 +66,36 @@ async def post_image(file: UploadFile = File(...)) -> MacrosResponse:
     # call llm
     try:
         res_text: str = llm.get_macros_from_text(text)
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Error accessing LLM backend: {e}")
+    
+    # parse json
+    try:
+        res: Dict[str, Any] = json.loads(res_text)
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=502, detail="LLM returned invalid output.")
+    
+    # macros keys and values 
+    calories: int = int (res.get("calories", 0))
+    protein: int = int (res.get("protein", 0))
+    fat: int = int (res.get("fat", 0))
+    carbs: int = int(res.get("carbs", 0))
+    
+    return MacrosResponse(
+        calories=calories,
+        protein=protein,
+        fat=fat,
+        carbs=carbs
+    )
+
+@app.post("/analyze-text")
+async def analyze_text(body: TextRequest) -> MacrosResponse:
+    if not body.text.strip():
+        raise HTTPException(status_code=422, detail="No text provided.")
+
+    # call llm
+    try:
+        res_text: str = llm.get_macros_from_text(body.text)
     except Exception as e:
         raise HTTPException(status_code=503, detail=f"Error accessing LLM backend: {e}")
     
