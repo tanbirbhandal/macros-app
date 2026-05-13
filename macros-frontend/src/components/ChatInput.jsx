@@ -29,7 +29,7 @@ export default function ChatInput({ onUpload, onTextSubmit, isLoading }) {
     return (
         <Box sx={{
             position: 'fixed',
-            bottom: 110,
+            bottom: 50,
             left: '50%',
             transform: 'translateX(-50%)',
             width: '55%',
