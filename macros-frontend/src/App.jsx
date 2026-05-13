@@ -8,6 +8,8 @@ import DailyMacros from './components/DailyMacros';
 import WaterCard from './components/WaterCard';
 import MacrosGoal from './components/MacrosGoal';
 import WaterGoal from './components/WaterGoal';
+import PreviewArea from './components/PreviewArea';
+import ChatInput from './components/ChatInput';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,19 +43,12 @@ export default function App() {
         <MacrosGoal />
         <WaterGoal />
       </Box>
-      {/* Main content area that pushes children toward the bottom */}
-      <main>
-        <Upload onClick={handleUpload} disabled={isLoading} />
-
+      <main style={{ paddingBottom: '100px' }}>
+        <PreviewArea result={ result } />
         {isLoading && <p style={{ marginTop: 12 }}>Uploading...</p>}
         {error && <p style={{ marginTop:12, color: 'crimson' }}>Error: {error}</p>}
-
-        {result && 
-          <Box sx ={{ mt: 2 }}>
-            <MacrosCard data={result} />
-          </Box>
-        }
       </main>
+      <ChatInput />
     </>
   );
 }
