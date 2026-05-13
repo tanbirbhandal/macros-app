@@ -3,9 +3,7 @@ import Header from './components/Header';
 import { uploadMenuImage, analyzeText } from './api/upload.js';
 import Box from '@mui/material/Box';
 import DailyMacros from './components/DailyMacros';
-import WaterCard from './components/WaterCard';
 import MacrosGoal from './components/MacrosGoal';
-import WaterGoal from './components/WaterGoal';
 import PreviewArea from './components/PreviewArea';
 import ChatInput from './components/ChatInput';
 
@@ -60,9 +58,7 @@ export default function App() {
     <Header />
       <Box sx={{ display: 'flex', gap: 2, p: 2 }}>
         <DailyMacros />
-        <WaterCard />
         <MacrosGoal />
-        <WaterGoal />
       </Box>
       <main style={{ paddingBottom: '100px' }}>
         <PreviewArea result={ result } previewUrl={previewUrl} previewText={previewText} />
