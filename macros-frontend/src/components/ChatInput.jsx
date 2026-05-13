@@ -1,8 +1,15 @@
 import { Box, TextField, IconButton } from '@mui/material';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
+import {useRef } from 'react';
 
-export default function ChatInput() {
+export default function ChatInput({ onUpload }) {
+    const fileInputRef = useRef(null);
+
+    function handleFileUpload(e) {
+        const file = e.target.files[0];
+        if (file) onUpload(file);
+    }
     return (
         <Box sx={{
             position: 'fixed',
@@ -19,6 +26,13 @@ export default function ChatInput() {
             gap: 1,
             zIndex: 100,
         }}>
+            <input
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                style={{ display: 'none' }}
+                onChange={handleFileUpload}
+            />
             <TextField
                 fullWidth
                 multiline
@@ -35,7 +49,7 @@ export default function ChatInput() {
             <IconButton sx={{ color: '#555' }}>
                 <PhotoCameraIcon />
             </IconButton>
-            <IconButton sx={{ color: '#555' }}>
+            <IconButton sx={{ color: '#555' }} onClick={() => fileInputRef.current.click()}>
                 <UploadFileIcon />
             </IconButton>
         </Box>

@@ -9,7 +9,7 @@ export default function MacrosCard({ data }) {
   ];
 
   return (
-    <Card sx={{ borderRadius: 10, p: 1, maxWidth: 400, mx: 'auto' }}>
+    <Card sx={{ borderRadius: 10, p: 1, maxWidth: 600, mx: 'auto' }}>
       <CardContent>
         <Typography variant="h5" gutterBottom sx={{ textAlign: 'center' }}>
           Macros breakdown
@@ -24,10 +24,10 @@ export default function MacrosCard({ data }) {
                 p: 2,
                 textAlign: 'center'
               }}>
-                <Typography variant="h5" sx={{ color: macro.textColor, fontWeight: 500 }}>
+                <Typography variant="h4" sx={{ color: macro.textColor, fontWeight: 500 }}>
                   {macro.value}{macro.unit}
                 </Typography>
-                <Typography variant="body2" sx={{ color: macro.textColor }}>
+                <Typography variant="body1" sx={{ color: macro.textColor }}>
                   {macro.label}
                 </Typography>
               </Box>

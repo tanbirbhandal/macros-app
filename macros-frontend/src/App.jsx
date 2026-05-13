@@ -15,9 +15,11 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
+  const [previewUrl, setPreviewUrl] = useState(null);
 
   async function handleUpload(file) {
     if (!file) return;
+    setPreviewUrl(URL.createObjectURL(file));
     setIsLoading(true);
     setError('');
     setResult(null);
@@ -44,11 +46,11 @@ export default function App() {
         <WaterGoal />
       </Box>
       <main style={{ paddingBottom: '100px' }}>
-        <PreviewArea result={ result } />
+        <PreviewArea result={ result } previewUrl={previewUrl} />
         {isLoading && <p style={{ marginTop: 12 }}>Uploading...</p>}
         {error && <p style={{ marginTop:12, color: 'crimson' }}>Error: {error}</p>}
       </main>
-      <ChatInput />
+      <ChatInput onUpload={handleUpload} />
     </>
   );
 }

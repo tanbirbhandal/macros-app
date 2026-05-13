@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import MacrosCard from './MacrosCard';
 
-export default function PreviewArea({ result }) {
+export default function PreviewArea({ result, previewUrl }) {
     return (
         <Box sx={{
             border: '1px solid #ddd',
@@ -15,17 +15,24 @@ export default function PreviewArea({ result }) {
             gap: 2,
         }}>
             <Box sx= {{
-                border: '1px dashed #aaa',
                 borderRadius: 2,
                 p: 2,
-                flex: 1,
+                flex: 0.5,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
             }}>
-                <Typography variant="body2" sx={{ color: 'gray' }}>
-                    Image or text preview will appear here
-                </Typography>
+                {previewUrl ? (
+                    <img
+                        src={previewUrl}
+                        alt="Uploaded preview"
+                        style={{ maxWidth: '100%', maxHeight: '400px', borderRadius: '8px' }}
+                    />
+                ) : (
+                    <Typography variant="body2" sx={{ color: 'gray '}}>
+                        Image or text preview will appear here
+                    </Typography>
+                )}
             </Box>
 
             {result && <MacrosCard data={result} />}
