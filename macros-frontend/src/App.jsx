@@ -54,6 +54,20 @@ export default function App() {
     }
   }
 
+  function handleMealConsumed() {
+    setDailyMacros(prev => ({
+      calories: prev.calories + result.calories,
+      protein: prev.protein + result.protein,
+      fat: prev.fat + result.fat,
+      carbs: prev.carbs + result.carbs,
+    }));
+    setResult(null);
+  }
+
+  function handleMealNotConsumed() {
+    setResult(null);
+  }
+
   return (
     <>
     <Header />
@@ -62,7 +76,13 @@ export default function App() {
         <MacrosGoal />
       </Box>
       <main style={{ paddingBottom: '100px' }}>
-        <PreviewArea result={ result } previewUrl={previewUrl} previewText={previewText} />
+        <PreviewArea
+        result={result}
+        previewUrl={previewUrl}
+        previewText={previewText}
+        onMealConsumed={handleMealConsumed}
+        onMealNotConsumed={handleMealNotConsumed}
+        />
         {error && <p style={{ marginTop:12, color: 'crimson' }}>Error: {error}</p>}
       </main>
       <ChatInput onUpload={handleUpload} onTextSubmit={handleTextSubmit} isLoading={isLoading} />

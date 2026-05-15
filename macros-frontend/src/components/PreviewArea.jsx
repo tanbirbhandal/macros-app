@@ -1,7 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import MacrosCard from './MacrosCard';
+import MealConsumed from './MealConsumed';
 
-export default function PreviewArea({ result, previewUrl, previewText }) {
+export default function PreviewArea({ result, previewUrl, previewText, onMealConsumed, onMealNotConsumed }) {
     return (
         <Box sx={{
             border: '1px solid #ddd',
@@ -40,6 +41,7 @@ export default function PreviewArea({ result, previewUrl, previewText }) {
             </Box>
 
             {result && <MacrosCard data={result} />}
+            {result && <MealConsumed onYes={onMealConsumed} onNo={onMealNotConsumed} />}
         </Box>
     );
 }
