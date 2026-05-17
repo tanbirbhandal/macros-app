@@ -13,7 +13,8 @@ export default function App() {
   const [error, setError] = useState('');
   const [previewUrl, setPreviewUrl] = useState(null);
   const [previewText, setPreviewText] = useState(null);
-  const [dailyMacros, setDailyMacros] = useState({ calories: 0, protein: 0, fat: 0, carbs: 0 })
+  const [dailyMacros, setDailyMacros] = useState({ calories: 0, protein: 0, fat: 0, carbs: 0 });
+  const [macrosGoal, setMacrosGoal] = useState({ calories: 0, protein: 0, fat: 0, carbs: 0 });
 
   async function handleUpload(file) {
     if (!file) return;
@@ -68,12 +69,16 @@ export default function App() {
     setResult(null);
   }
 
+  function handleSaveGoal(goal) {
+    setMacrosGoal(goal);
+  }
+
   return (
     <>
     <Header />
       <Box sx={{ display: 'flex', gap: 2, p: 2 }}>
         <DailyMacros dailyMacros={dailyMacros}/>
-        <MacrosGoal />
+        <MacrosGoal macrosGoal={macrosGoal} onSaveGoal={handleSaveGoal} />
       </Box>
       <main style={{ paddingBottom: '100px' }}>
         <PreviewArea
