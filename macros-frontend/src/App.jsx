@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import { uploadMenuImage, analyzeText } from './api/upload.js';
 import Box from '@mui/material/Box';
@@ -7,14 +7,52 @@ import MacrosGoal from './components/MacrosGoal';
 import PreviewArea from './components/PreviewArea';
 import ChatInput from './components/ChatInput';
 
+const STORAGE_KEY = 'lastActiveDate';
+const EMPTY_MACROS = { calories: 0, protein: 0, fat: 0, carbs: 0 };
+
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
   const [previewUrl, setPreviewUrl] = useState(null);
   const [previewText, setPreviewText] = useState(null);
-  const [dailyMacros, setDailyMacros] = useState({ calories: 0, protein: 0, fat: 0, carbs: 0 });
-  const [macrosGoal, setMacrosGoal] = useState({ calories: 0, protein: 0, fat: 0, carbs: 0 });
+  const [dailyMacros, setDailyMacros] = useState(EMPTY_MACROS);
+  const [macrosGoal, setMacrosGoal] = useState(EMPTY_MACROS);
+
+  // return string value of current date
+  function getCurrDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  }
+
+  // check and reset if new day
+  function checkAndResetDay() {
+    const storedDate = localStorage.getItem(STORAGE_KEY);
+    const currDate = getCurrDate();
+
+    if (storedDate !== currDate) {
+      setDailyMacros(EMPTY_MACROS);
+      localStorage.setItem(STORAGE_KEY, currDate);
+    }
+  }
+
+  // runs once on mount, resets day if needed
+  useEffect(() => {
+    checkAndResetDay();
+
+  }, []);
+
+  // runs once on mount, checks if new day every minute -- resets if new day
+  useEffect(() => {
+    const timer = setInterval(checkAndResetDay, 60000);
+
+    // stops timer when app unmounts
+    return () => clearInterval(timer);
+  }, []);
 
   async function handleUpload(file) {
     if (!file) return;
