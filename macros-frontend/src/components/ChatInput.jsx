@@ -1,5 +1,4 @@
 import { Box, TextField, IconButton, Typography } from '@mui/material';
-import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import {useRef, useState} from 'react';
@@ -77,9 +76,6 @@ export default function ChatInput({ onUpload, onTextSubmit, isLoading }) {
                         '& .MuiInput-underline:after': { display: 'none' },
                     }}
                 />
-                <IconButton sx={{ color: '#555' }}>
-                    <PhotoCameraIcon />
-                </IconButton>
                 <IconButton sx={{ color: '#555' }} onClick={() => fileInputRef.current.click()}>
                     <UploadFileIcon />
                 </IconButton>
