@@ -1,10 +1,12 @@
-from typing import Union
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from typing import  Dict, Any
 from typing_extensions import TypedDict
 import json
 from fastapi.middleware.cors import CORSMiddleware
 from  pydantic import BaseModel
+from dotenv import load_dotenv
+
+load_dotenv()
 
 import llm, ocr
 
@@ -18,9 +20,6 @@ class MacrosResponse(TypedDict):
     carbs: int
 
 app = FastAPI()
-
-
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -36,16 +35,9 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-
-
-
-@app.get("/")
-def read_root() -> Dict[str, str]:
-    return {"Hello": "World"}
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None) -> Dict[str, Any]:
-    return {"item_id": item_id, "q": q}
+@app.get("/health")
+def health_check() -> Dict[str, str]:
+    return {"status": "ok"}
 
 @app.post("/upload")
 async def post_image(file: UploadFile = File(...)) -> MacrosResponse:
