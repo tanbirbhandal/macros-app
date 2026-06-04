@@ -17,7 +17,7 @@ export default function MacrosCard({ data }) {
 
         <Grid container spacing={2}>
           {macros.map((macro) => (
-            <Grid item xs={3} key={macro.label}>
+            <Grid item xs={6} sm={3} key={macro.label}>
               <Box sx={{
                 bgcolor: macro.color,
                 borderRadius: 4,

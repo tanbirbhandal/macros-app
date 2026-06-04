@@ -1,5 +1,5 @@
 import { 
-    Card, CardContent, Typography, Box, Button, 
+    Card, Typography, Box, Button, 
     Dialog, DialogTitle, DialogContent, DialogActions, TextField
  } from '@mui/material';
 import { useState } from 'react';
@@ -31,10 +31,9 @@ export default function MacrosGoal({ macrosGoal, onSaveGoal }) {
 
     return (
         <>
-            <Card sx = {{ width: '50%', borderRadius: 4, border: '1px solid #ddd' }}>
-                <CardContent>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                        <Box sx={{ width: 80 }} />
+            <Card sx = {{ width: { xs: '100%', md: '50%' }, borderRadius: 4, border: '1px solid #ddd' }}>
+                <Box sx={{ p: '12px' }}>
+                    <Box sx={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 1 }}>
                         <Typography variant="h6" sx={{ fontWeight: 600 }}>
                             Macros Goal
                         </Typography>
@@ -43,6 +42,8 @@ export default function MacrosGoal({ macrosGoal, onSaveGoal }) {
                             size="small"
                             onClick={handleOpen}
                             sx={{ 
+                                position: 'absolute',
+                                right: 0,
                                 borderColor: '#ebebeb',
                                 color: '#555',
                                 backgroundColor: '#ebebeb',
@@ -62,11 +63,11 @@ export default function MacrosGoal({ macrosGoal, onSaveGoal }) {
                                     flex: 1,
                                     bgcolor: macro.color,
                                     borderRadius: 2,
-                                    p: 2,
+                                    p: { xs: 2, md: 1.2 },
                                     textAlign: 'center',
                                 }}
                             >
-                            <Typography variant="h6" sx={{ color: macro.textColor, fontWeight: 500 }}>
+                            <Typography variant="h6" sx={{ color: macro.textColor, fontWeight: 500, fontSize: { xs: '1rem', md: '0.95rem' } }}>
                                 {macrosGoal?.[macro.key] ?? 0}{macro.unit}
                             </Typography>
                             <Typography variant="caption" sx={{ color: macro.textColor }}>
@@ -75,13 +76,13 @@ export default function MacrosGoal({ macrosGoal, onSaveGoal }) {
                     </Box>
                     ))}
                 </Box>
-                </CardContent>
+                </Box>
                 </Card>
 
                 <Dialog open={open} onClose={handleCancel} maxWidth="sm" fullWidth>
                     <DialogTitle>Enter Macros Goal</DialogTitle>
                     <DialogContent>
-                        <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
+                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mt: 1 }}>
                             {macros.map((macro) => (
                                 <TextField
                                     key={macro.key}

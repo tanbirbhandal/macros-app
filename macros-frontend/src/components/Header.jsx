@@ -27,9 +27,13 @@ export default function Header() {
     <AppBar position="sticky" sx={{ backgroundColor: 'white', boxShadow: 1, borderRadius: 4 }}>
       <Toolbar sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <img src={GymLogo} alt="GYM logo" width={100} height={100} />
+          <img src={GymLogo} alt="GYM logo" style={{ width: 'clamp(40px, 6vw, 75px)', height: 'auto' }} />
         </Box>
-        <Typography variant="h5" sx={{ color: 'black', fontWeight: 600 }}>
+        <Typography variant="h5" sx={{ 
+          color: 'black',
+          fontWeight: 600,
+          fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' }
+          }}>
           Get Your Macros
         </Typography>
         <Box sx={{ minWidth: 120, textAlign: 'right' }}>

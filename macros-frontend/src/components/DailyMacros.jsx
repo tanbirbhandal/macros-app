@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { Card, Typography, Box } from '@mui/material';
 
 export default function DailyMacros({ dailyMacros }) {
     const macros= [
@@ -9,8 +9,8 @@ export default function DailyMacros({ dailyMacros }) {
     ]
 
     return (
-        <Card sx={{ width: '50%', borderRadius: 4, border: '1px solid #ddd' }}>
-            <CardContent>
+        <Card sx={{ width: { xs: '100%', md: '50%' }, borderRadius: 4, border: '1px solid #ddd' }}>
+            <Box sx={{ p: '12px' }}>
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, textAlign: 'center' }}>
                     Daily Macros
                 </Typography>
@@ -22,11 +22,11 @@ export default function DailyMacros({ dailyMacros }) {
                                 flex: 1,
                                 bgcolor: macro.color,
                                 borderRadius: 2,
-                                p: 2,
+                                p: { xs: 2, md: 1.2 },
                                 textAlign: 'center',
                             }}
                         >
-                        <Typography variant="h6" sx={{ color: macro.textColor, fontWeight: 500 }}>
+                        <Typography variant="h6" sx={{ color: macro.textColor, fontWeight: 500, fontSize: { xs: '1rem', md: '0.95rem' } }}>
                             {macro.value}{macro.unit}
                         </Typography>
                         <Typography variant="caption" sx={{ color: macro.textColor }}>
@@ -35,7 +35,7 @@ export default function DailyMacros({ dailyMacros }) {
                         </Box>
                     ))}
                 </Box>
-            </CardContent>
+            </Box>
         </Card>
     );
 }

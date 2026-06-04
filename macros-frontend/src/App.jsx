@@ -114,11 +114,11 @@ export default function App() {
   return (
     <>
     <Header />
-      <Box sx={{ display: 'flex', gap: 2, p: 2 }}>
+      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 1.5, p: { xs: 2, md: 1 } }}>
         <DailyMacros dailyMacros={dailyMacros}/>
         <MacrosGoal macrosGoal={macrosGoal} onSaveGoal={handleSaveGoal} />
       </Box>
-      <main style={{ paddingBottom: '100px' }}>
+      <main style={{ paddingBottom: '80px' }}>
         <PreviewArea
         result={result}
         previewUrl={previewUrl}

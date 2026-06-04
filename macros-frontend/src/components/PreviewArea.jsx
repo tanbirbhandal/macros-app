@@ -10,7 +10,7 @@ export default function PreviewArea({ result, previewUrl, previewText, onMealCon
             p: 2,
             mx: 2,
             mb: 2,
-            minHeight: '700px',
+            minHeight: { xs: '300px', sm: '350px', md: '45vh' },
             display: 'flex',
             flexDirection: 'column',
             gap: 2,
