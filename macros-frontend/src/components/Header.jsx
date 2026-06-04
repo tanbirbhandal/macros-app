@@ -1,4 +1,4 @@
-import GymLogo from '../assets/GYM.png';
+import GymLogo from '../assets/gym_full_logo.png'
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 import { useState, useEffect } from 'react';
 
@@ -25,18 +25,11 @@ export default function Header() {
 
   return (
     <AppBar position="sticky" sx={{ backgroundColor: 'white', boxShadow: 1, borderRadius: 4 }}>
-      <Toolbar sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <img src={GymLogo} alt="GYM logo" style={{ width: 'clamp(40px, 6vw, 75px)', height: 'auto' }} />
+      <Toolbar sx={{ position: 'relative', justifyContent: 'center', alignItems: 'center' }}>
+        <Box sx={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
+          <img src={GymLogo} alt="GYM logo" style={{ width: 'clamp(150px, 20vw, 300px)', height: 'auto' }} />
         </Box>
-        <Typography variant="h5" sx={{ 
-          color: 'black',
-          fontWeight: 600,
-          fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' }
-          }}>
-          Get Your Macros
-        </Typography>
-        <Box sx={{ minWidth: 120, textAlign: 'right' }}>
+        <Box sx={{ minWidth: 120, textAlign: 'left', marginRight: 'auto' }}>
           <Typography variant="body2" sx={{ color: 'gray' }}>
             {dateStr}
           </Typography>
@@ -44,6 +37,7 @@ export default function Header() {
             {timeStr}
           </Typography>
         </Box>
+
       </Toolbar>
     </AppBar>
   );
