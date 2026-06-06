@@ -16,7 +16,7 @@ export default function MealConsumed({ onYes, onNo }) {
                 <Button
                     variant="contained"
                     onClick={onYes}
-                    sx={{ background: '1a1a1a', '&:hover': { backgroundColor: '#333' } }}
+                    sx={{ backgroundColor: '1a1a1a', '&:hover': { backgroundColor: '#333' } }}
                 >
                     Yes
                 </Button>

@@ -49,7 +49,7 @@ export default function MacrosGoal({ macrosGoal, onSaveGoal }) {
                                 backgroundColor: '#ebebeb',
                                 borderRadius: 3,
                                 textTransform: 'none',
-                                '&: hover': { borderColor: '#d9d9d9', backgroundColor: '#d9d9d9' }
+                                '&:hover': { borderColor: '#d9d9d9', backgroundColor: '#d9d9d9' }
                              }}
                         >
                             Edit Goal
