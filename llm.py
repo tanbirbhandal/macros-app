@@ -2,9 +2,13 @@ import os
 from typing import Final
 from groq import Groq
 
+# initialize Groq client -- reads API key from environment variable set in .env
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
+# llm model to query for macro estimation
 MODEL_NAME: Final[str] = "llama-3.1-8b-instant"
+
+# system prompt sent to the llm prior to every request
 PROMPT: Final[str] = """You are a nutrition assistant. Given a meal description or menu item, 
 estimate its macros.
 
@@ -23,14 +27,20 @@ estimate its macros.
 def get_macros_from_text(ingredients: str) -> str:
     chat_completion = client.chat.completions.create(
         messages=[
+            # system sets the llm's role and output format
             {"role": "system", "content": PROMPT},
+            
+            # user message contains meal info input from user
             {"role": "user", "content": f"Estimate macros for: {ingredients}"}
         ],
         model=MODEL_NAME,
+        # low temperature ensures consistency of json format for each response
         temperature=0.1,
+        #response's token limit, only need 30-40 tokens
         max_tokens=100,
     )
 
+    # extract text from llm's response
     response_text = chat_completion.choices[0].message.content.strip()
     print(f"[LLM] Groq response: {response_text}")
     return response_text

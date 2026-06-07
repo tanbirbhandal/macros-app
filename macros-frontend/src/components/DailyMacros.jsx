@@ -1,6 +1,9 @@
 import { Card, Typography, Box } from '@mui/material';
 
 export default function DailyMacros({ dailyMacros }) {
+
+    // macro display config -- label, current value, unit, and color scheme for each box
+    // macro value defaults to 0 if the value is missing
     const macros= [
         { label: 'Calories', value: dailyMacros?.calories ?? 0, unit: '', color: '#FFF3E0', textColor: '#E65100' },
         { label: 'Protein', value: dailyMacros?.protein ?? 0, unit: 'g', color: '#E3F2FD', textColor: '#0D47A1' },
@@ -9,11 +12,16 @@ export default function DailyMacros({ dailyMacros }) {
     ]
 
     return (
+        // card takes full width on mobile, 50% on desktop -- aligns side-by-side with MacrosGoal
         <Card sx={{ width: { xs: '100%', md: '50%' }, borderRadius: 4, border: '1px solid #ddd' }}>
+
+            {/* Box is used instead of CardContent for control over padding */}
             <Box sx={{ p: '12px' }}>
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, textAlign: 'center' }}>
                     Daily Macros
                 </Typography>
+
+                {/* flex row of 4 colored macro boxes */}
                 <Box sx={{ display: 'flex', gap: 2 }}>
                     {macros.map((macro) => (
                         <Box
