@@ -4,20 +4,26 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import {useRef, useState} from 'react';
 
 export default function ChatInput({ onUpload, onTextSubmit, isLoading }) {
+    // ref to the hidden file input element
     const fileInputRef = useRef(null);
+
+    // controlled state for the text field
     const [text, setText] = useState('');
 
+    // called when user selects a file -- passes the file up to App.jsx
     function handleFileUpload(e) {
         const file = e.target.files[0];
         if (file) onUpload(file);
     }
 
+    // called when user clicks the send button or presses Enter
     function handleTextSubmit() {
         if (!text.trim()) return;
         onTextSubmit(text);
         setText('');
     }
 
+    // submit on Enter key press
     function handleKeySubmit(e) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
@@ -26,6 +32,8 @@ export default function ChatInput({ onUpload, onTextSubmit, isLoading }) {
     }
     
     return (
+        // fixed positioning keeps the input bar at the bottom of the viewport
+        // responsive width and bottom spacing adjust for different screen sizes
         <Box sx={{
             position: 'fixed',
             bottom: { xs: 16, sm: 24, md: 50 },
@@ -38,6 +46,7 @@ export default function ChatInput({ onUpload, onTextSubmit, isLoading }) {
             alignItems: 'center',
             gap: 1,
           }}>
+            {/* uploading indicator shown above the input bar while API call is in progress */}
             {isLoading && (
               <Typography variant="body2" sx={{ color: 'gray', fontSize: '1rem', fontWeight: 500 }}>
                 Uploading...
@@ -53,13 +62,17 @@ export default function ChatInput({ onUpload, onTextSubmit, isLoading }) {
                 alignItems: 'flex-start',
                 gap: 1,
             }}>
+                {/* hidden file input */}
                 <input
                     type="file"
+                    // restrict to image files only
                     accept="image/*"
                     ref={fileInputRef}
                     style={{ display: 'none' }}
                     onChange={handleFileUpload}
                 />
+                
+                {/* text field for typing meal ingredients */}
                 <TextField
                     fullWidth
                     multiline
@@ -76,9 +89,13 @@ export default function ChatInput({ onUpload, onTextSubmit, isLoading }) {
                         '& .MuiInput-underline:after': { display: 'none' },
                     }}
                 />
+
+                {/* upload icon opens the file picker when clicked */}
                 <IconButton sx={{ color: '#555' }} onClick={() => fileInputRef.current.click()}>
                     <UploadFileIcon />
                 </IconButton>
+
+                {/* send button submits the typed text */}
                 <IconButton
                     onClick={(handleTextSubmit)}
                     sx={{
