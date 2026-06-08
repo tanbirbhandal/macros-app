@@ -1,3 +1,8 @@
+// MacrosGoal.jsx -- displays the user's daily macro goals
+// includes an Edit Goal dialog to set new targets
+// receives macrosGoal from App.jsx and calls onSaveGoal to update it
+// used by: App.jsx
+
 import { 
     Card, Typography, Box, Button, 
     Dialog, DialogTitle, DialogContent, DialogActions, TextField

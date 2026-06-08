@@ -1,3 +1,8 @@
+// DailyMacros.jsx -- displays the user's running daily macro totals
+// receives dailyMacros from App.jsx -- updates each time a meal is logged
+// resets to zero at midnight via App.jsx midnight reset logic
+// used by: App.jsx
+
 import { Card, Typography, Box } from '@mui/material';
 
 export default function DailyMacros({ dailyMacros }) {

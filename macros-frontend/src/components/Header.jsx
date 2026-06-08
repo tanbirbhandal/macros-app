@@ -1,3 +1,7 @@
+// Header.jsx -- sticky top navigation bar
+// displays the GYM logo centered and the live date/time on the left
+// used by: App.jsx
+
 import GymLogo from '../assets/gym_full_logo.png'
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 import { useState, useEffect } from 'react';
