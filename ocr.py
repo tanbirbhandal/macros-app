@@ -1,3 +1,7 @@
+# ocr.py -- Tesseract OCR service
+# converts uploaded image bytes into a text string
+# used by: main.py in the /upload endpoint before calling the LLM
+
 import pytesseract
 import io
 from PIL import Image

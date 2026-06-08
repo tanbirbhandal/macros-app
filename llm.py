@@ -1,3 +1,7 @@
+# llm.py -- Groq LLM integration
+# sends meal descriptions to the Groq API and returns macro estimates as a JSON string
+# used by: main.py in both /upload and /analyze-text endpoints
+
 import os
 from typing import Final
 from groq import Groq

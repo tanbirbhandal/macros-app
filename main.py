@@ -1,3 +1,8 @@
+# main.py -- FastAPI backend server
+# exposes two endpoints: /upload (image) and /analyze-text (text)
+# both endpoints run the input through the LLM and return macro estimates
+# used by: the React frontend via fetch calls in upload.js
+
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from typing import  Dict, Any
 from typing_extensions import TypedDict
