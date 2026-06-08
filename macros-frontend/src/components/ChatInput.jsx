@@ -1,3 +1,8 @@
+// ChatInput.jsx -- fixed input bar at the bottom of the screen
+// supports image upload via file picker and text entry via keyboard
+// calls onUpload or onTextSubmit in App.jsx depending on input type
+// used by: App.jsx
+
 import { Box, TextField, IconButton, Typography } from '@mui/material';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';

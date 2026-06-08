@@ -1,3 +1,7 @@
+// main.jsx -- entry point for the React app
+// mounts the App component into the #root div in index.html
+// imports Roboto font weights required by Material UI
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import '@fontsource/roboto/300.css';
