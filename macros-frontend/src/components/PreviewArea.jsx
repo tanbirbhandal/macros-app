@@ -1,3 +1,8 @@
+// PreviewArea.jsx -- main content area between the header cards and the chat input
+// shows uploaded image preview, typed text preview, or a placeholder
+// renders MacrosCard and MealConsumed after analysis completes
+// used by: App.jsx
+
 import { Box, Typography } from "@mui/material";
 import MacrosCard from './MacrosCard';
 import MealConsumed from './MealConsumed';

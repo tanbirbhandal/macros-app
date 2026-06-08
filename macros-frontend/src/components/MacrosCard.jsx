@@ -1,3 +1,7 @@
+// MacrosCard.jsx -- displays the macro breakdown result after a meal is analyzed
+// receives the macro data object { calories, protein, fat, carbs } from PreviewArea
+// used by: PreviewArea.jsx
+
 import { Card, CardContent, Typography, Box, Grid } from '@mui/material';
 
 export default function MacrosCard({ data }) {

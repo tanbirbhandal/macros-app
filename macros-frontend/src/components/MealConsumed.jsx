@@ -1,3 +1,8 @@
+// MealConsumed.jsx -- yes/no prompt shown after macro results are displayed
+// yes: adds the meal's macros to the daily total via App.jsx
+// no: discards the result without logging
+// used by: PreviewArea.jsx
+
 import { Box, Typography, Button } from '@mui/material';
 
 export default function MealConsumed({ onYes, onNo }) {
