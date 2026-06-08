@@ -1,3 +1,8 @@
+// App.jsx -- root component and state manager
+// holds all app state: daily macros, macro goals, meal results, loading, errors
+// renders Header, DailyMacros, MacrosGoal, PreviewArea, and ChatInput
+// passes state and handler functions down to child components as props
+
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import { uploadMenuImage, analyzeText } from './api/upload.js';

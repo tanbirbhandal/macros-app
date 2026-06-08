@@ -1,5 +1,7 @@
 /**
- * API helper module -- all HTTP calls from the React frontend to the FastAPI backend live here
+ * upload.js -- API helper for the React frontend
+ * handles all HTTP calls to the FastAPI backend
+ * used by: App.jsx to send image uploads and text submissions
  */
 
 // read backend URL from Vite environment variable
