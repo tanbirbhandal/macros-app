@@ -13,6 +13,8 @@ export default function MealConsumed({ onYes, onNo }) {
                 Did you consume this meal?
             </Typography>
             <Box sx={{ display: 'flex', gap: 2 }}>
+
+                {/* triggers handleMealConsumed in App.jsx -- adds macros to daily total */}
                 <Button
                     variant="contained"
                     onClick={onYes}
@@ -20,6 +22,8 @@ export default function MealConsumed({ onYes, onNo }) {
                 >
                     Yes
                 </Button>
+
+                {/* triggers handleMealNotConsumed in App.jsx -- discards the result */}
                 <Button
                     variant="outlined"
                     onClick={onNo}

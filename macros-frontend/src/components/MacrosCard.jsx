@@ -1,6 +1,8 @@
 import { Card, CardContent, Typography, Box, Grid } from '@mui/material';
 
 export default function MacrosCard({ data }) {
+
+  // display config for each macro result
   const macros = [
     { label: 'Calories', value: data.calories, unit: '',  color: '#FFF3E0', textColor: '#E65100' },
     { label: 'Protein',  value: data.protein,  unit: 'g', color: '#E3F2FD', textColor: '#0D47A1' },
