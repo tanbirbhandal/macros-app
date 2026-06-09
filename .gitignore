@@ -2,4 +2,4 @@
 *.jpg
 *.txt
 .DS_Store
-.DS_Store
+.env
