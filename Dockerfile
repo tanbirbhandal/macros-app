@@ -2,7 +2,7 @@
 # installs Tesseract OCR at the OS level (required by pytesseract)
 # installs Python dependencies and copies source files
 # runs the FastAPI server on port 8000
-# used by: Railway for backend deployment
+# used by: AWS EC2 for backend deployment
 
 # base image -- Python 3.11, slim keeps the container size small
 FROM python:3.11-slim

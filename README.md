@@ -23,7 +23,7 @@ description using OCR and an LLM, then tracks daily intake against personal goal
 | LLM | Groq API (Llama 3.1 8B Instant) |
 | Containerization | Docker |
 | Frontend Hosting | Vercel |
-| Backend Hosting | Railway |
+| Backend Hosting | AWS EC2 |
 
 ## Project Structure
 
@@ -94,5 +94,5 @@ docker run -p 8000:8000 -e GROQ_API_KEY=your_key macros-backend
 
 ## Deployment
 
-- Backend → Railway
+- Backend → AWS EC2
 - Frontend → Vercel

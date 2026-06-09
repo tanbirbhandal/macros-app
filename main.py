@@ -49,7 +49,7 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-# health check endpoint -- used by Railway to verify the server is running
+# health check endpoint -- used by AWS EC2 to verify the server is running
 @app.get("/health")
 def health_check() -> Dict[str, str]:
     return {"status": "ok"}
