@@ -39,7 +39,8 @@ app.add_middleware(
         # alternate local address
         "http://127.0.0.1:5173",
         
-        # TODO: add deployed Vercel URL here after frontend deployment
+        # deployed frontend with Vercel
+        "https://macros-app-steel.vercel.app"
     ],
     
     allow_credentials=True,
