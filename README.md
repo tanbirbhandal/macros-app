@@ -64,7 +64,8 @@ cd macros-app
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env    # add your GROQ_API_KEY to .env
+cp .env.example .env
+# add your GROQ_API_KEY to .env
 uvicorn main:app --reload
 ```
 Backend runs at `http://localhost:8000`
@@ -93,5 +94,5 @@ docker run -p 8000:8000 -e GROQ_API_KEY=your_key macros-backend
 
 ## Deployment
 
-- Backend → Railway (Docker container)
-- Frontend → Vercel (Vite static build)
+- Backend → Railway
+- Frontend → Vercel
