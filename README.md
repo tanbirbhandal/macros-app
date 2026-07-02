@@ -94,5 +94,5 @@ docker run -p 8000:8000 -e GROQ_API_KEY=your_key macros-backend
 
 ## Deployment
 
-- Backend → AWS EC2
+- Backend → Render
 - Frontend → Vercel
