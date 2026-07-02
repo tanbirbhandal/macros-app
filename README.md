@@ -68,7 +68,7 @@ cp .env.example .env
 # add your GROQ_API_KEY to .env
 uvicorn main:app --reload
 ```
-Backend runs at `http://localhost:8000`
+Backend runs at `https://macros-app.onrender.com`
 
 ### Frontend
 ```bash
@@ -77,7 +77,7 @@ npm install
 # create .env.local with: VITE_API_URL=http://localhost:8000
 npm run dev
 ```
-Frontend runs at `http://localhost:5173`
+Frontend runs at `https://macros-app-steel.vercel.app`
 
 ### Docker (backend)
 ```bash
