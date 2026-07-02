@@ -69,6 +69,7 @@ cp .env.example .env
 uvicorn main:app --reload
 ```
 Backend runs at `https://macros-app.onrender.com`
+Backend health check runs at `https://macros-app.onrender.com/health`
 
 ### Frontend
 ```bash
