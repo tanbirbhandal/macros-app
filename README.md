@@ -23,7 +23,7 @@ description using OCR and an LLM, then tracks daily intake against personal goal
 | LLM | Groq API (Llama 3.1 8B Instant) |
 | Containerization | Docker |
 | Frontend Hosting | Vercel |
-| Backend Hosting | AWS EC2 |
+| Backend Hosting | Render |
 
 ## Project Structure
 
