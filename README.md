@@ -20,7 +20,7 @@ description using OCR and an LLM, then tracks daily intake against personal goal
 | Frontend | React 19, Vite, Material UI |
 | Backend | FastAPI (Python) |
 | OCR | Tesseract / pytesseract |
-| LLM | Groq API (Llama 3.1 8B Instant) |
+| LLM | Groq API (GPT OSS 20B) |
 | Containerization | Docker |
 | Frontend Hosting | Vercel |
 | Backend Hosting | Render |
