@@ -41,7 +41,7 @@ def get_macros_from_text(ingredients: str) -> str:
         # low temperature ensures consistency of json format for each response
         temperature=0.1,
         #response's token limit, only need 30-40 tokens
-        max_tokens=100,
+        max_tokens=1024,
     )
 
     # extract text from llm's response
