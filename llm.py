@@ -10,7 +10,7 @@ from groq import Groq
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 # llm model to query for macro estimation
-MODEL_NAME: Final[str] = "llama-3.1-8b-instant"
+MODEL_NAME: Final[str] = "openai/gpt-oss-20b"
 
 # system prompt sent to the llm prior to every request
 PROMPT: Final[str] = """You are a nutrition assistant. Given a meal description or menu item, 
